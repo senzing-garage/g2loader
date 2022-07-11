@@ -1635,7 +1635,7 @@ if __name__ == '__main__':
 
     # Get the INI parameters to use
     iniParamCreator = G2IniParams()
-    g2module_params = iniParamCreator.getJsonINIParams(iniFileName)
+    g2module_params =  os.getenv("SENZING_ENGINE_CONFIGURATION_JSON", iniParamCreator.getJsonINIParams(iniFileName))
 
     # Check what DB Type - new API requested for engine to return instead of parsing here when added to engine
     conn_str = json.loads(g2module_params)['SQL'].get('CONNECTION', None)
