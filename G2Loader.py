@@ -26,9 +26,9 @@ from CompressedFile import (fileRowParser, isCompressedFile,
                             openPossiblyCompressedFile)
 from G2ConfigTables import G2ConfigTables
 from G2Project import G2Project
-from G2IniParams import G2IniParams
+#from G2IniParams import G2IniParams
 
-from senzing import G2Config, G2ConfigMgr, G2Diagnostic, G2Engine, G2Exception, G2Product, G2ModuleException, G2ModuleLicenseException
+from senzing import G2Config, G2ConfigMgr, G2Diagnostic, G2Engine, G2Exception, G2Product, G2ModuleException, G2ModuleLicenseException, G2IniParams
 
 # -----------------------------------------------------------------------------
 # Exceptions
@@ -1628,6 +1628,27 @@ if __name__ == '__main__':
             sys.exit(1)
     else:
         errors_file = ''
+
+    #Check for iniFile
+    if args.iniFile:
+
+    	iniFileName = pathlib.Path(args.iniFile[0])
+    	G2Paths.check_file_exists_and_readable(iniFileName)
+    	iniParamCreator = G2IniParams()
+    	g2module_params = iniParamCreator.getJsonINIParams(iniFileName)
+    #Check for env config_json
+    elif os.getenv("SENZING_ENGINE_CONFIGURATION_JSON"):
+
+    	print("case2")
+    	g2module_params =  os.getenv("SENZING_ENGINE_CONFIGURATION_JSON")
+    #Use default configuration
+    else:
+
+        iniFileName = pathlib.Path(G2Paths.get_G2Module_ini_path())
+        G2Paths.check_file_exists_and_readable(iniFileName)
+        iniParamCreator = G2IniParams()
+        g2module_params = iniParamCreator.getJsonINIParams(iniFileName)
+
 
     # If ini file isn't specified try and locate it with G2Paths
     iniFileName = pathlib.Path(G2Paths.get_G2Module_ini_path()) if not args.iniFile else pathlib.Path(args.iniFile[0]).resolve()
