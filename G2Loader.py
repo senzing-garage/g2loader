@@ -1639,7 +1639,6 @@ if __name__ == '__main__':
     #Check for env config_json
     elif os.getenv("SENZING_ENGINE_CONFIGURATION_JSON"):
 
-        print("case2")
         g2module_params =  os.getenv("SENZING_ENGINE_CONFIGURATION_JSON")
     #Use default configuration
     else:
