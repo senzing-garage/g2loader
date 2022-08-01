@@ -1629,12 +1629,13 @@ if __name__ == '__main__':
     else:
         errors_file = ''
 
+
+    iniParamCreator = G2IniParams()
     #Check for iniFile
     if args.iniFile:
 
         iniFileName = pathlib.Path(args.iniFile[0])
         G2Paths.check_file_exists_and_readable(iniFileName)
-        iniParamCreator = G2IniParams()
         g2module_params = iniParamCreator.getJsonINIParams(iniFileName)
     #Check for env config_json
     elif os.getenv("SENZING_ENGINE_CONFIGURATION_JSON"):
@@ -1645,17 +1646,8 @@ if __name__ == '__main__':
 
         iniFileName = pathlib.Path(G2Paths.get_G2Module_ini_path())
         G2Paths.check_file_exists_and_readable(iniFileName)
-        iniParamCreator = G2IniParams()
         g2module_params = iniParamCreator.getJsonINIParams(iniFileName)
 
-
-    # If ini file isn't specified try and locate it with G2Paths
-    iniFileName = pathlib.Path(G2Paths.get_G2Module_ini_path()) if not args.iniFile else pathlib.Path(args.iniFile[0]).resolve()
-    G2Paths.check_file_exists_and_readable(iniFileName)
-
-    # Get the INI parameters to use
-    iniParamCreator = G2IniParams()
-    g2module_params =  os.getenv("SENZING_ENGINE_CONFIGURATION_JSON", iniParamCreator.getJsonINIParams(iniFileName))
 
     # Check what DB Type - new API requested for engine to return instead of parsing here when added to engine
     conn_str = json.loads(g2module_params)['SQL'].get('CONNECTION', None)
