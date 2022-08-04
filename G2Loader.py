@@ -571,7 +571,7 @@ def perform_load():
                             work_queue.put((row_data, True if dsrcAction == 'X' else False), True, 1)
                         except Full:
                             # Check to see if any threads have died
-                            if not all([thread.is_alive() for thread in thread_list]):
+                            if not all((thread.is_alive() for thread in thread_list)):
                                 print(textwrap.dedent('''\n\
                                     ERROR: Thread(s) have shutdown unexpectedly!
 
@@ -605,7 +605,7 @@ def perform_load():
                 break
 
             # Check if any of the threads died without throwing errors
-            if not all([thread.is_alive() for thread in thread_list]):
+            if not all((thread.is_alive() for thread in thread_list)):
                 print('\nERROR: Thread failure!')
                 break
 
@@ -995,7 +995,7 @@ def stop_loader_process_and_threads(thread_list, work_queue):
         # It is possible to reach here and the processes be shut down. This can happen when using PostgreSQL and the
         # Governor is paused waiting for a vacuum and CTRL-C is sent. Thus, ensure there are processes/threads alive
         # or the while will never exit
-        while work_queue.empty() is False and any([thread.is_alive() for thread in thread_list]):
+        while work_queue.empty() is False and any((thread.is_alive() for thread in thread_list)):
             print(f'Waiting for remaining records on the queue to be read, remaining: {work_queue.qsize()}', flush=True)
             time.sleep(2)
 
@@ -1459,14 +1459,14 @@ if __name__ == '__main__':
     # Both -p and -f shouldn't be used together
     file_project_group = g2load_parser.add_mutually_exclusive_group()
     file_project_group.add_argument('-p', '--projectFile', default=None, dest='projectFileName', metavar='file',
-                                    help=textwrap.dedent(f'''\
+                                    help=textwrap.dedent('''\
 
                                            Path and name of a project CSV or JSON file.
 
                                     '''))
 
     file_project_group.add_argument('-f', '--fileSpec', default=[], dest='projectFileSpec', metavar='file', nargs='+',
-                                    help=textwrap.dedent(f'''\
+                                    help=textwrap.dedent('''\
 
                                            Path and name of a source file to load, such as /data/mydata.json
                                            
@@ -1555,7 +1555,7 @@ if __name__ == '__main__':
                                      '''))
 
     g2load_parser.add_argument('-gd', '--governorDisable', action='store_true', default=False,
-                               help=textwrap.dedent(f'''\
+                               help=textwrap.dedent('''\
 
                                       Disable the Postgres governor.
 
@@ -1569,21 +1569,21 @@ if __name__ == '__main__':
                                '''))
 
     g2load_parser.add_argument('-skr', '--skipRecords', default=0, metavar='num_recs', type=int,
-                               help=textwrap.dedent(f'''\
+                               help=textwrap.dedent('''\
 
                                       Skip the first n records in a file.
 
                                     '''))
 
     g2load_parser.add_argument('-sfi', '--shuffFilesIgnore', action='store_true', default=False,
-                               help=textwrap.dedent(f'''\
+                               help=textwrap.dedent('''\
 
                                       Skip checking for previously shuffled files to use, and prompting to use them.
 
                                     '''))
 
     g2load_parser.add_argument('-sfr', '--shuffFileRedirect', default=None, metavar='path', nargs='+',
-                               help=textwrap.dedent(f'''\
+                               help=textwrap.dedent('''\
 
                                       Alternative path to output shuffled file to, useful for performance and device space.
                                                                                         
@@ -1593,7 +1593,7 @@ if __name__ == '__main__':
 
     # Both -ef and -ed shouldn't be used together
     g2load_parser.add_argument('-es', '--errorsShort', action='store_true', default=False,
-                               help=textwrap.dedent(f'''\
+                               help=textwrap.dedent('''\
 
                                       Reduce size of the errors file by not including the record.
 
@@ -1601,7 +1601,7 @@ if __name__ == '__main__':
 
     error_file_group = g2load_parser.add_mutually_exclusive_group()
     error_file_group.add_argument('-ef', '--errorsFile', default=errors_file_default, metavar='file', nargs='?',
-                                  help=textwrap.dedent(f'''\
+                                  help=textwrap.dedent('''\
 
                                          Path/file to write errors to.
                                                                                         
@@ -1610,7 +1610,7 @@ if __name__ == '__main__':
                                        '''))
 
     error_file_group.add_argument('-efd', '--errorsFileDisable', action='store_true', default=False,
-                                  help=textwrap.dedent(f'''\
+                                  help=textwrap.dedent('''\
 
                                          Turn off writing errors to file, written to terminal instead.
 
@@ -1619,7 +1619,7 @@ if __name__ == '__main__':
     # Both -nt and -ntm shouldn't be used together
     num_threads_group = g2load_parser.add_mutually_exclusive_group()
     num_threads_group.add_argument('-nt', '--threadCount', default=0, dest='thread_count', metavar='num_threads', type=int,
-                                   help=textwrap.dedent(f'''\
+                                   help=textwrap.dedent('''\
 
                                           Total number of threads to start.
                                                                                         
@@ -1628,7 +1628,7 @@ if __name__ == '__main__':
                                         '''))
 
     num_threads_group.add_argument('-ntm', '--threadCountMem', choices=range(10, 81), const=80, default=None, metavar='10 -> 80', nargs='?', type=int,
-                                   help=textwrap.dedent(f'''\
+                                   help=textwrap.dedent('''\
 
                                           Percentage of memory to use when calculating threads (when -nt not specified).
                                                                                         
@@ -1639,7 +1639,7 @@ if __name__ == '__main__':
     # Both -ns and -snd shouldn't be used together
     no_shuf_shuf_no_del = g2load_parser.add_mutually_exclusive_group()
     no_shuf_shuf_no_del.add_argument('-ns', '--noShuffle', action='store_true', default=False,
-                                     help=textwrap.dedent(f'''\
+                                     help=textwrap.dedent('''\
 
                                             Don\'t shuffle input file(s).
                                                                                         
@@ -1659,14 +1659,14 @@ if __name__ == '__main__':
     # Both -R and -sr shouldn't be used together
     stop_row_redo_node = g2load_parser.add_mutually_exclusive_group()
     stop_row_redo_node.add_argument('-R', '--redoMode', action='store_true', default=False,
-                                    help=textwrap.dedent(f'''\
+                                    help=textwrap.dedent('''\
 
                                            Run in redo only mode, processes the redo queue.
 
                                     '''))
 
     stop_row_redo_node.add_argument('-sr', '--stopOnRecord', default=0, metavar='num_recs', type=int,
-                                    help=textwrap.dedent(f'''\
+                                    help=textwrap.dedent('''\
 
                                            Stop processing after n records (for testing large files).
 
@@ -1675,14 +1675,14 @@ if __name__ == '__main__':
     # Both -P and -D shouldn't be used together
     purge_dsrc_delete = g2load_parser.add_mutually_exclusive_group()
     purge_dsrc_delete.add_argument('-D', '--delete', action='store_true', default=False, dest='deleteMode',
-                                   help=textwrap.dedent(f'''\
+                                   help=textwrap.dedent('''\
 
                                           Force deletion of a previously loaded file.
 
                                    '''))
 
     purge_dsrc_delete.add_argument('-P', '--purgeFirst', action='store_true', default=False,
-                                   help=textwrap.dedent(f'''\
+                                   help=textwrap.dedent('''\
 
                                           Purge the Senzing repository before loading, confirmation prompt before purging.
                                           
@@ -1693,7 +1693,7 @@ if __name__ == '__main__':
                                    '''))
 
     purge_dsrc_delete.add_argument('--FORCEPURGE', action='store_true', default=False, dest='forcePurge',
-                                   help=textwrap.dedent(f'''\
+                                   help=textwrap.dedent('''\
 
                                           Purge the Senzing repository before loading, NO confirmation prompt before purging.
                                           
