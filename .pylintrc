@@ -19,6 +19,7 @@ disable=
     redefined-outer-name,
     simplifiable-if-expression,
     superfluous-parens,
+    too-few-public-methods,
     too-many-arguments,
     too-many-branches,
     too-many-lines,
