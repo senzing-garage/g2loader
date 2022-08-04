@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2022-08-04
+
+### Added to 2.1.0
+
+- Improve workload stats dumping for each engine process
+- Workload stats now dumped every 2 mins instead of x records
+- Support for SENZING_ENGINE_CONFIGURATION_JSON
+- Improve handling of CTRL-C for Postgres governor
+- Fix uncaught exception on startup checks
+- Add prologue warning G2Loader is a PoC tool
+- Improved help
+- Add basic Senzing repository information to startup output
+
 ## [2.0.3] - 2022-07-20
 
 ### Added to 2.0.3
