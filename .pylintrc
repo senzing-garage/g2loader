@@ -10,6 +10,7 @@ disable=
     import-error,
     invalid-name,
     line-too-long,
+    min-public-methods,
     missing-class-docstring,
     missing-function-docstring,
     missing-module-docstring,
