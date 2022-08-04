@@ -10,7 +10,6 @@ disable=
     import-error,
     invalid-name,
     line-too-long,
-    min-public-methods,
     missing-class-docstring,
     missing-function-docstring,
     missing-module-docstring,
@@ -20,6 +19,7 @@ disable=
     redefined-outer-name,
     simplifiable-if-expression,
     superfluous-parens,
+    too-few-public-methods
     too-many-arguments,
     too-many-branches,
     too-many-lines,
