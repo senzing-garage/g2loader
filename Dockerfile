@@ -17,7 +17,9 @@ USER root
 
 RUN apt-get update \
  && apt-get -y install \
-    less \
+      less \
+      python3 \
+      python3-pip \
  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
