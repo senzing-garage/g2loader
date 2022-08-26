@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=senzing/senzing-base:1.6.8
+ARG BASE_IMAGE=senzing/senzingapi-tools:3.2.0
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2022-05-16
+ENV REFRESHED_AT=2022-08-25
 
 LABEL Name="senzing/g2loader" \
       Maintainer="support@senzing.com" \
@@ -17,7 +17,9 @@ USER root
 
 RUN apt-get update \
  && apt-get -y install \
-    less \
+      less \
+      python3 \
+      python3-pip \
  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
