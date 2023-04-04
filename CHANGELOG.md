@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.3] - 2023-04-04
+
+### Changed in 2.2.3
+
+- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-tools:3.5.0`
+- In `requirements.txt`, updated:
+  - psycopg2-binary==2.9.6
+
 ## [2.2.2] - 2022-10-11
 
 ### Changed in 2.2.2

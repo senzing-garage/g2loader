@@ -30,9 +30,9 @@ from G2Project import G2Project
 from senzing import G2Config, G2ConfigMgr, G2Diagnostic, G2Engine, G2Exception, G2Product, G2ModuleLicenseException
 
 __all__ = []
-__version__ = '2.2.2'  # See https://www.python.org/dev/peps/pep-0396/
+__version__ = '2.2.3'  # See https://www.python.org/dev/peps/pep-0396/
 __date__ = '2018-09-18'
-__updated__ = '2022-10-11'
+__updated__ = '2023-04-04'
 
 # -----------------------------------------------------------------------------
 # Exceptions
