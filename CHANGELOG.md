@@ -88,7 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added to 2.0.1
 
-- Migrated Dockerfile from [docker-g2loader](https://github.com/Senzing/docker-g2loader) to this repository
+- Migrated Dockerfile from [docker-g2loader](https://github.com/senzing-garage/docker-g2loader) to this repository
 
 ## [2.0.0] - 2022-05-04
 
