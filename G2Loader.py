@@ -1773,8 +1773,8 @@ if __name__ == '__main__':
 
             For appropriate ingestion infrastructure please check:
 
-                https://github.com/senzing/stream-producer
-                https://github.com/senzing/stream-loader
+                https://github.com/senzing-garage/stream-producer
+                https://github.com/senzing-garage/stream-loader
 
             *****************************
             '''))
