@@ -976,7 +976,6 @@ def g2_thread(_, work_queue_, g2_engine_, thread_stop, dsrc_action_args):
 
             if dsrc_action == 'X':
                 dsrc_action_str = 'reevaluateRecord()'
-                
                 # Check if the redo record is a REPAIR_ENTITY one, call reevaluateEntity() if so
                 # {'UMF_PROC': {'NAME': 'REPAIR_ENTITY', 'PARAMS': [{'PARAM': {'NAME': 'ENTITY_ID', 'VALUE': '32705738'}}]}}
                 if not data_source and not record_id:
@@ -984,7 +983,7 @@ def g2_thread(_, work_queue_, g2_engine_, thread_stop, dsrc_action_args):
                     if entity_id:
                         g2_engine_.reevaluateEntity(entity_id)
                     else:
-                        g2thread_error(f"Unable to process redo record format!", dsrc_action_str)
+                        g2thread_error("Unable to process redo record format!", dsrc_action_str)
                 else:
                     g2_engine_.reevaluateRecord(data_source, record_id, 0)
 
