@@ -922,7 +922,7 @@ def g2_thread(_, work_queue_, g2_engine_, thread_stop, dsrc_action_args):
 
         # Record is JSON
         data_source = row.get('DATA_SOURCE', '')
-        record_id = str(row.get('RECORD_ID', ''))            
+        record_id = str(row.get('RECORD_ID', ''))
 
         # Is the record from the work queue specifically a redo record to be processed during redo time/mode?
         if is_redo_record:
@@ -1751,7 +1751,8 @@ if __name__ == '__main__':
             * applications, process and systems. G2Loader is a demonstrable application using some of the ingestion APIs. *
             *                                                                                                             *
             * Typically, the Senzing APIs are embedded in and called by streaming systems to provide real time entity     *
-            * resolution capabilities. Example of a streaming ingest utility: https://github.com/Senzing/stream-loader    *
+            * resolution capabilities. Example of a streaming ingest utility: https://github.com/senzing-garage/stream-   *
+            * loader                                                                                                      *
             *                                                                                                             *
             ***************************************************************************************************************
             '''))
@@ -1772,8 +1773,8 @@ if __name__ == '__main__':
 
             For appropriate ingestion infrastructure please check:
 
-                https://github.com/Senzing/stream-producer
-                https://github.com/Senzing/stream-loader
+                https://github.com/senzing/stream-producer
+                https://github.com/senzing/stream-loader
 
             *****************************
             '''))
