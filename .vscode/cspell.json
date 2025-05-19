@@ -1,0 +1,46 @@
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  "words": [
+      "Senzing",
+      "CODEOWNER",
+      "ICLA",
+      "CCLA",
+      "psycopg",
+      "alnum",
+      "toplevel",
+      "truthset",
+      "DSRC",
+      "YESPURGE",
+      "FORCEPURGE",
+      "dbperf",
+      "sdbp",
+      "senz",
+      "Shuf",
+      "parms",
+      "Unconfigured",
+      "reeval",
+      "shuff",
+      "plib",
+      "FMXSR",
+      "configmgr",
+      "senzprojs",
+      "stackoverflow",
+      "senzingapi",
+      "rootfs",
+      "pylint",
+      "simplifiable",
+      "analysing",
+      "shellcheck",
+      "pydevproject",
+      "pydev",
+      "buildx",
+      "DOCKERHUB"
+    ],
+  "ignorePaths": [
+    ".git/**"
+  ]
+}
